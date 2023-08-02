@@ -8,18 +8,18 @@ gpio.setup(22, gpio.OUT)
 gpio.setup(27, gpio.OUT)
 
 def forward():
-    gpio.out(22,True )
-    gpio.out(27, False)
+    gpio.output(22,True )
+    gpio.output(27, False)
 
 def backward():
-    gpio.out(22, False)
-    gpio.out(27, True)
+    gpio.output(22, False)
+    gpio.output(27, True)
 
 def turnOn():
-    gpio.out(17,True)
+    gpio.output(17,True)
 
 def turnOff():
-    gpio.out(17, False)
+    gpio.output(17, False)
 
 turnOn()
 forward()
