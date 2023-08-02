@@ -1,2 +1,2 @@
 
-print ("high")
+print ("low")
