@@ -15,5 +15,5 @@ def my_message(data):
 def disconnect():
     print('disconnected from server')
 
-sio.connect('http://192.168.2.14:3000')
+sio.connect('http://192.168.2.14:3000',,,,,,,True,5)
 sio.wait()
