@@ -1,8 +1,8 @@
+on = False
 import RPi.GPIO as gpio
 import time
 import socketio
 
-on = False
 
 sio = socketio.Client()
 
