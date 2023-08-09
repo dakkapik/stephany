@@ -23,12 +23,12 @@ def turnOn():
 def turnOff():
     gpio.output(17, False)
 
-turnOn()
-forward()
-time.sleep(5)
-backward()
-time.sleep(5)
-turnOff()
+# turnOn()
+# forward()
+# time.sleep(5)
+# backward()
+# time.sleep(5)
+# turnOff()
 
 @sio.event
 def connect():
