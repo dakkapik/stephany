@@ -1,6 +1,8 @@
 import RPi.GPIO as gpio
 import time
+import socketio
 
+sio = socketio.Client()
 
 gpio.setmode(gpio.BCM)
 gpio.setup(17, gpio.OUT)
@@ -28,7 +30,23 @@ backward()
 time.sleep(5)
 turnOff()
 
+@sio.event
+def connect():
+    sio.emit("ID", 'steph-pi')
+    print('connection established')
+    turnOn()
 
+@sio.event
+def exec(direction):
+    if(data == 'forward'):
+        forward()
+    else:
+        backward()
 
+@sio.event
+def disconnect():
+    print('disconnected from server')
+    turnOn()
 
-
+sio.connect('http://192.168.2.13:3000')
+sio.wait()
