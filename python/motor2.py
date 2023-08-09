@@ -37,7 +37,7 @@ def connect():
     turnOn()
 
 @sio.event
-def exec(direction):
+def movePi(direction):
     if(data == 'forward'):
         forward()
     else:
