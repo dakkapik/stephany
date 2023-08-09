@@ -2,9 +2,10 @@ import RPi.GPIO as gpio
 import time
 import socketio
 
+on = False
+
 sio = socketio.Client()
 
-on = False
 
 gpio.setmode(gpio.BCM)
 gpio.setup(17, gpio.OUT)
