@@ -1,11 +1,8 @@
-on = False
 import RPi.GPIO as gpio
 import time
 import socketio
 
-
 sio = socketio.Client()
-
 
 gpio.setmode(gpio.BCM)
 gpio.setup(17, gpio.OUT)
@@ -41,19 +38,21 @@ def movePi(direction):
 
 @sio.event 
 def piTurnedOff():
-    if(on):
+    if(onState):
         print('Turned off')
-        on = False
+        onState = False
         turnOff()
     else:
         print("turned on")
-        on = True
+        onState = True
         turnOn()
 
 
 @sio.event
 def disconnect():
     print('disconnected from server')
+
+onState = True
 
 sio.connect('http://192.168.2.13:3000')
 sio.wait()
