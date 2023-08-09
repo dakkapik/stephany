@@ -23,13 +23,6 @@ def turnOn():
 def turnOff():
     gpio.output(17, False)
 
-# turnOn()
-# forward()
-# time.sleep(5)
-# backward()
-# time.sleep(5)
-# turnOff()
-
 @sio.event
 def connect():
     sio.emit("ID", 'steph-pi')
@@ -44,10 +37,16 @@ def movePi(direction):
     else:
         backward()
 
+@sio.event 
+def piTurnedOff():
+    print('Turned off')
+    turnOff()
+
+
+
 @sio.event
 def disconnect():
     print('disconnected from server')
-    turnOn()
 
 sio.connect('http://192.168.2.13:3000')
 sio.wait()
