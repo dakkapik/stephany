@@ -38,7 +38,8 @@ def connect():
 
 @sio.event
 def movePi(direction):
-    if(data == 'forward'):
+    print('recieved direction:  ', direction)
+    if(direction == 'forward'):
         forward()
     else:
         backward()
