@@ -4,6 +4,7 @@ sio = socketio.Client()
 
 @sio.event
 def connect():
+    sio.emit("ID", 'steph-pi')
     print('connection established')
 
 @sio.event
@@ -15,5 +16,5 @@ def my_message(data):
 def disconnect():
     print('disconnected from server')
 
-sio.connect('http://192.168.2.16:3000')
+sio.connect('http://192.168.2.13:3000')
 sio.wait()
