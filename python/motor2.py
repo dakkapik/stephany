@@ -4,6 +4,8 @@ import socketio
 
 sio = socketio.Client()
 
+on = False
+
 gpio.setmode(gpio.BCM)
 gpio.setup(17, gpio.OUT)
 gpio.setup(22, gpio.OUT)
@@ -27,7 +29,6 @@ def turnOff():
 def connect():
     sio.emit("ID", 'steph-pi')
     print('connection established')
-    turnOn()
 
 @sio.event
 def movePi(direction):
@@ -39,9 +40,14 @@ def movePi(direction):
 
 @sio.event 
 def piTurnedOff():
-    print('Turned off')
-    turnOff()
-
+    if(on):
+        print('Turned off')
+        on = False
+        turnOff()
+    else:
+        print("turned on")
+        on = True
+        turnOn()
 
 
 @sio.event
